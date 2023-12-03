@@ -1,6 +1,6 @@
 package sky.pro;
 
-import sky.pro.Author;
+import java.util.Objects;
 
 public class Book {
     String name;
@@ -28,6 +28,22 @@ public class Book {
     public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
     }
+
+    public String toString() {
+        return "Имя " + this.name + ", Автор " + this.author + ", год публикации " + this.publishYear;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(name, book.name) && Objects.equals(author, book.author) && Objects.equals(publishYear, book.publishYear);
+    }
+
+    public int hashCode() {
+        return Objects.hash(name, author, publishYear);
+    }
+
 
 }
 
